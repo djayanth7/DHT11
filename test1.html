@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-time Sensor Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      color: #333333;
+    }
+
+    p {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Real-time Sensor Data</h1>
+  <p id="sensorData">Loading...</p>
+
+  <script>
+    function fetchData() {
+      fetch('/')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('sensorData').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    setInterval(fetchData, 2000);
+  </script>
+</body>
+</html>
